@@ -1594,30 +1594,20 @@ elseif LUDIKRIS_MAP
 else
 
 	if 2_PLAYER_GAME
+create_actor_area 60 60 1234 52
 
 
 create_object RELIC
 {
   number_of_objects 1
-  number_of_groups 3
+  number_of_groups 6
   set_gaia_object_only
-  min_distance_group_placement 25
-  temp_min_distance_group_placement 30
-  min_distance_to_players 36
-  avoid_forest_zone 2
-}
-
-create_object RELIC
-{
-  number_of_objects 1
-  number_of_groups 1
-  set_gaia_object_only
-   avoid_actor_area 6163
-  min_distance_to_players 24
-  min_distance_group_placement 25
-  find_closest
+  min_distance_group_placement 24
+  temp_min_distance_group_placement 25
+  min_distance_to_players 28
+  avoid_forest_zone 4
+  actor_area_to_place_in 1234
   set_place_for_every_player
-  avoid_forest_zone 2
 }
 
 	elseif 3_PLAYER_GAME
@@ -1834,3 +1824,15 @@ max_number_of_cliffs 6
 min_length_of_cliff  2
 max_length_of_cliff  6
 */
+
+
+/*
+
+Set monk with relic move speed to near 0, in order to force players to build monasteries at relic locations
+Bump the relic generation bonus up by 50%
+*/
+#const MONK_WITH_RELIC_CLASS 943
+#const AMOUNT_RELIC_RATE 191
+
+effect_percent SET_ATTRIBUTE MONK_WITH_RELIC_CLASS ATTR_MOVE_SPEED 1
+effect_percent MOD_RESOURCE AMOUNT_RELIC_RATE ATTR_ADD 50
